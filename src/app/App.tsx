@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, Suspense } from "react";
 
 import "./styles/index.scss";
 import { Link } from "react-router-dom";
@@ -12,11 +12,13 @@ function App(): ReactElement {
   const { theme, toggleTheme } = useTheme();
   return (
     <div className={classnames("app", { hovered: false }, [theme])}>
-      <Navbar />
-      <div className="app__content">
-        <Sidebar />
-        <AppRouter />
-      </div>
+      <Suspense fallback="loading">
+        <Navbar />
+        <div className="app__content">
+          <Sidebar />
+          <AppRouter />
+        </div>
+      </Suspense>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { BuildOptions } from "./types/config";
 
 export function buildPlugins({
   paths,
+  isDev,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
   return [
     new webpack.ProgressPlugin(),
@@ -16,5 +17,9 @@ export function buildPlugins({
       filename: "css/[name].[contenthash:6].css",
       chunkFilename: "css/[name].[contenthash:6].css",
     }),
+    new webpack.DefinePlugin({
+      _IS__DEV_: JSON.stringify(isDev),
+    })
+
   ];
 }
