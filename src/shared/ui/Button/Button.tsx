@@ -22,6 +22,7 @@ export default function Button({
   return (
     <button className={classnames(cls.Button, {[cls[theme]]: true}, [className])} {...otherProps}>
       {children}
+      
     </button>
   );
 }
