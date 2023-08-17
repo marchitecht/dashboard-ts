@@ -21,7 +21,6 @@ export default function Applink({
   theme = ApplinkTheme.PRIMARY,
   ...otherProps
 }: ApplinkProps) {
-  console.log(otherProps, "====");
 
   return (
     <>
@@ -37,3 +36,4 @@ export default function Applink({
     </>
   );
 }
+
