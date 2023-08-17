@@ -9,6 +9,7 @@ Little pet-project that gives:
 - decomposition of webpack config
 - TS implementations
 - build without cra starter
+- added i18n-react
 
 to be upd...
 
