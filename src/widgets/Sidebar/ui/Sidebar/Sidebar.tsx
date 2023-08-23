@@ -10,6 +10,7 @@ interface SidebarProps {
 
 export default function Sidebar({ className }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false);
+ 
   const toggle = () => {
     setCollapsed((prev) => !prev);
   };
