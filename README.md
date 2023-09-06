@@ -10,6 +10,8 @@ Little pet-project that gives:
 - TS implementations
 - build without cra starter
 - added i18n-react
+- storybook and jest testing
+- React Portal for Modals
 
 to be upd...
 
