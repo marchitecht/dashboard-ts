@@ -10,8 +10,8 @@ export default function PageLoader({ className }: PageLoaderProps) {
   return (
     <div className={classnames(cls.PageLoader, {}, [className])}>
       <div className={cls["lds-ripple"]}>
-        <div></div>
-        <div></div>
+        <div/>
+        <div/>
       </div>
     </div>
   );
