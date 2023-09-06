@@ -4,7 +4,7 @@
 Stack: 
 React 18, webpack, scss
 
-Little pet-project that gives: 
+Starter that gives: 
 - an example of FSD architecture
 - decomposition of webpack config
 - TS implementations
