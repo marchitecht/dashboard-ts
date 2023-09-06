@@ -8,7 +8,7 @@ Starter that gives:
 - an example of FSD architecture
 - decomposition of webpack config
 - TS implementations
-- build without cra starter
+- built without cra starter
 - added i18n-react
 - storybook and jest testing
 - React Portal for Modals
