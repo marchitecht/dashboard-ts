@@ -7,6 +7,7 @@ import { Navbar } from "widgets/Navbar";
 import { classnames } from "shared/helpers/classnames/classnames";
 import { Sidebar } from "widgets/Sidebar";
 import Modal from "shared/ui/Modal/Modal";
+import { Counter } from "entities/Counter";
 
 function App(): ReactElement {
   // useEffect(() => {
@@ -20,7 +21,7 @@ function App(): ReactElement {
     <div className={classnames("app", {}, [theme])}>
       <Suspense fallback="">
         <Navbar />
-        <div className="app__content">
+        <div className="content-page">
           <Sidebar />
           <AppRouter />
         </div>
