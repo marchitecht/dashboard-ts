@@ -6,7 +6,7 @@ import { AppRouter } from "./providers/router";
 import { Navbar } from "widgets/Navbar";
 import { classnames } from "shared/helpers/classnames/classnames";
 import { Sidebar } from "widgets/Sidebar";
-import Modal from "shared/ui/Modal/Modal";
+import { Modal } from "shared/ui/Modal/Modal";
 import { Counter } from "entities/Counter";
 
 function App(): ReactElement {
