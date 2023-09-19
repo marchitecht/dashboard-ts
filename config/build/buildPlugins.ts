@@ -9,11 +9,11 @@ export function buildPlugins({
   paths,
   isDev,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
-  return [
-    new webpack.ProgressPlugin(),
+  const plugins = [
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
+    new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({
       filename: "css/[name].[contenthash:6].css",
       chunkFilename: "css/[name].[contenthash:6].css",
@@ -21,8 +21,14 @@ export function buildPlugins({
     new webpack.DefinePlugin({
       _IS__DEV_: JSON.stringify(isDev),
     }),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
   ];
+  if (isDev) {
+    plugins.push(new webpack.HotModuleReplacementPlugin());
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+      })
+    );
+  }
+  return plugins;
 }
