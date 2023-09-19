@@ -13,7 +13,7 @@ type HTMLInputProps = Omit<
   "value" | "onChange"
 >;
 
-interface InputProps extends HTMLInputProps {
+export interface InputProps extends HTMLInputProps {
   className?: string;
   value?: string;
   onChange?: (value: string) => void;
