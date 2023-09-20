@@ -8,6 +8,8 @@ import { classnames } from "shared/helpers/classnames/classnames";
 import { Sidebar } from "widgets/Sidebar";
 import { Modal } from "shared/ui/Modal/Modal";
 import { Counter } from "entities/Counter";
+import { useDispatch } from "react-redux";
+import { userActions } from "entities/User";
 
 function App(): ReactElement {
   // useEffect(() => {
@@ -17,6 +19,13 @@ function App(): ReactElement {
   // });
 
   const { theme, toggleTheme } = useTheme();
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(userActions.initAuthData());
+  }, [dispatch]);
+
+
   return (
     <div className={classnames("app", {}, [theme])}>
       <Suspense fallback="">

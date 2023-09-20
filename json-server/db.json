@@ -6,6 +6,6 @@
     { "id": 4, "title": "json-server", "author": "some" }
   ],
   "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "user": [{ "id": 1, "username": "admin", "password": "admin" }],
+  "users": [{ "id": 1, "username": "admin", "password": "123" }],
   "profile": { "name": "typicode" }
 }
