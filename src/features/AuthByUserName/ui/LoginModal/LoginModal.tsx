@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { classnames } from "shared/helpers/classnames/classnames";
 import cls from "./LoginModal.module.scss";
-import { LoginForm } from "../LoginForm/LoginForm";
 import { Modal } from "shared/ui/Modal/Modal";
+import { LoginFormAsync } from "../LoginForm/LoginForm.async";
 
 interface LoginModalProps {
   className?: string;
@@ -21,7 +21,9 @@ export default function LoginModal({
       className={classnames(cls.LoginModal, {}, [className])}
       isOpen={isOpen}
       onClose={onClose}>
-      <LoginForm />
+      <Suspense fallback={"...Loading..."}>
+        <LoginFormAsync />
+      </Suspense>
     </Modal>
   );
 }
