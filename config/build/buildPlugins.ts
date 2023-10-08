@@ -22,13 +22,14 @@ export function buildPlugins({
       _IS__DEV_: JSON.stringify(isDev),
     }),
   ];
-  plugins.push(
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    })
-  );
+
   if (isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+      })
+    );
   }
   return plugins;
 }
