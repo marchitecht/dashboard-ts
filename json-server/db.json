@@ -7,5 +7,14 @@
   ],
   "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
   "users": [{ "id": 1, "username": "admin", "password": "123" }],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "firstName": "Marat",
+    "lastName": "Musin",
+    "age": 25,
+    "currency": "USD",
+    "country": "Russia",
+    "city": "Moscow",
+    "avatar": "https://avatars.githubusercontent.com/u/90207733?v=4",
+    "username": "admin"
+  }
 }

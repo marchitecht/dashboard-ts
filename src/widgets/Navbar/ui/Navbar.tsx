@@ -2,7 +2,7 @@ import cls from "./Navbar.module.scss";
 import { useTheme } from "app/providers/ThemeProvider";
 import { getUserAuthData, userActions } from "entities/User";
 import { LoginModal } from "features/AuthByUserName";
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { classnames } from "shared/helpers/classnames/classnames";
 import Applink, { ApplinkTheme } from "shared/ui/Applink/Applink";
@@ -12,7 +12,7 @@ import { Modal } from "shared/ui/Modal/Modal";
 interface NavbarProps {
   className?: string;
 }
-export default function Navbar({ className }: NavbarProps) {
+const Navbar = memo(({ className }: NavbarProps) => {
   const [isAuthModal, setisAuthModal] = useState(false);
   const authData = useSelector(getUserAuthData);
   const dispatch = useDispatch();
@@ -42,19 +42,11 @@ export default function Navbar({ className }: NavbarProps) {
     <div className={classnames(cls.navbar, {}, [className])}>
       <Button className={cls.navbar__links} onClick={onShowModal}>
         войти
-        {/* <Applink theme={ApplinkTheme.PRIMARY} className={cls.mainLink} to="/">
-          MAIN
-        </Applink>
-        <Applink
-          theme={ApplinkTheme.SECONDARY}
-          className={cls.aboutLink}
-          to="/about">
-          ABOUT
-        </Applink> */}
       </Button>
       {isAuthModal && (
         <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
       )}
     </div>
   );
-}
+});
+export default Navbar;

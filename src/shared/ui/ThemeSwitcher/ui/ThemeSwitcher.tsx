@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { classnames } from "shared/helpers/classnames/classnames";
 import cls from "./ThemeSwitcher.module.scss";
 import { Theme, useTheme } from "app/providers/ThemeProvider";
@@ -10,7 +10,7 @@ interface ThemeSwitcherProps {
   className?: string;
 }
 
-export default function ThemeSwitcher({ className }: ThemeSwitcherProps) {
+const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -21,4 +21,5 @@ export default function ThemeSwitcher({ className }: ThemeSwitcherProps) {
       {theme === Theme.LIGHT ? <Sun /> : <Moon />}
     </Button>
   );
-}
+});
+export default ThemeSwitcher;

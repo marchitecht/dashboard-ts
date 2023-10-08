@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import cls from "./Sidebar.module.scss";
 import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
 import LangSwitcher from "widgets/LangSwitcher/ui/LangSwitcher";
-import Applink from "shared/ui/Applink/Applink";
 import { RoutePath } from "shared/config/routeConfig/route-config";
 import { useTranslation } from "react-i18next";
 import { classnames } from "shared/helpers/classnames/classnames";
+import { SidebarItemList, SidebarItemType } from "widgets/Sidebar/model/items";
+import SidebarItem from "../SidebarItem/SidebarItem";
 
 interface SidebarProps {
   className?: string;
 }
 
-export default function Sidebar({ className }: SidebarProps) {
+const Sidebar = memo(({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
   const { t } = useTranslation();
 
   const toggle = () => {
     setCollapsed((prev) => !prev);
   };
+  const [test, setTest] = useState(0);
 
   return (
     <div
@@ -26,12 +28,10 @@ export default function Sidebar({ className }: SidebarProps) {
       ])}>
       <button onClick={toggle}>toggle</button>
       <div className={cls.items}>
-        <Applink to={RoutePath.main} className={cls.item}>
-          <span className={cls.link}>{t("Главная")}</span>
-        </Applink>
-        <Applink to={RoutePath.about}>
-          <span className={cls.link}>{t("О нас")}</span>
-        </Applink>
+        {/* <button onClick={() => setTest((prev) => prev + 1)}>butt</button> */}
+        {SidebarItemList.map((item: SidebarItemType) => (
+          <SidebarItem item={item} collapsed={collapsed} key={item.path} />
+        ))}
       </div>
 
       <div className={cls.switchers}>
@@ -40,4 +40,5 @@ export default function Sidebar({ className }: SidebarProps) {
       </div>
     </div>
   );
-}
+});
+export default Sidebar;

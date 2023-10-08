@@ -22,7 +22,7 @@ export default function LoginModal({
       isOpen={isOpen}
       onClose={onClose}>
       <Suspense fallback={"...Loading..."}>
-        <LoginFormAsync />
+        <LoginFormAsync onSuccess={onClose}/>
       </Suspense>
     </Modal>
   );

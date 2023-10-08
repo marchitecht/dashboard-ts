@@ -8,6 +8,7 @@ import {
   Reducer,
   ReducersMapObject,
 } from "@reduxjs/toolkit";
+import { AccountSchema } from "entities/Account";
 
 export interface StateSchema {
   counter: CounterSchema;
@@ -15,6 +16,7 @@ export interface StateSchema {
 
   // Async reducers
   loginForm?: LoginSchema;
+  account?: AccountSchema;
 }
 export type StateSchemaKeys = keyof StateSchema;
 

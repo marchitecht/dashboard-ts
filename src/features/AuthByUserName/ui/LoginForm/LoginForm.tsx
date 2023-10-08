@@ -22,16 +22,18 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
 
 export interface LoginFormProps {
   className?: string;
+  onSuccess: () => void;
 }
 const initialReducer: ReducersList = {
   loginForm: loginReducer,
 };
 
-const LoginForm = memo(({ className }: LoginFormProps) => {
-  const dispatch = useDispatch<ThunkDispatch<any, any, AnyAction>>();
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
+  const dispatch = useAppDispatch();
   const username = useSelector(getLoginUsername);
   const password = useSelector(getLoginPassword);
   const isLoading = useSelector(getLoginIsLoading);
@@ -49,10 +51,12 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
     },
     [dispatch]
   );
-  const onLoginClick = useCallback(
-    () => dispatch(loginByUsername({ username, password })),
-    [dispatch, password, username]
-  );
+  const onLoginClick = useCallback(async () => {
+    const result = await dispatch(loginByUsername({ username, password }));
+    if (result.meta.requestStatus === "fulfilled") {
+      onSuccess();
+    }
+  }, [dispatch, password, username, onSuccess]);
 
   // const onLoginClick = async () => {
   //   try {
